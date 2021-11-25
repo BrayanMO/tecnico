@@ -126,20 +126,22 @@
             </a>
 
             <!-- box-3 -->
-            <div
-                class="mt-16 py-4 px-4 bg-whit w-72 bg-white rounded-xl shadow-lg hover:shadow-xl transform hover:scale-110 transition duration-500 mx-auto md:mx-0">
-                <div class="w-sm">
-                    <img class="w-64"
-                        src="https://images01.nicepage.com/c461c07a441a5d220e8feb1a/8cc47b39e719570b996d9879/dsds.jpg"
-                        alt="" />
-                    <div class="mt-4 text-green-600 text-center">
-                        <h1 class="text-xl font-bold">Ganancias</h1>
-                        <p class="mt-4 text-gray-600">Ganancias del servicio tecnico.</p>
-                        <button
-                            class="mt-8 mb-4 py-2 px-14 rounded-full bg-green-600 text-white tracking-widest hover:bg-green-500 transition duration-200">ver</button>
+            <a href="{{ route('reportes.ganancias') }}">
+                <div
+                    class="mt-16 py-4 px-4 bg-whit w-72 bg-white rounded-xl shadow-lg hover:shadow-xl transform hover:scale-110 transition duration-500 mx-auto md:mx-0">
+                    <div class="w-sm">
+                        <img class="w-64"
+                            src="https://images01.nicepage.com/c461c07a441a5d220e8feb1a/8cc47b39e719570b996d9879/dsds.jpg"
+                            alt="" />
+                        <div class="mt-4 text-green-600 text-center">
+                            <h1 class="text-xl font-bold">Ganancias</h1>
+                            <p class="mt-4 text-gray-600">Ganancias del servicio tecnico.</p>
+                            <button
+                                class="mt-8 mb-4 py-2 px-14 rounded-full bg-green-600 text-white tracking-widest hover:bg-green-500 transition duration-200">ver</button>
+                        </div>
                     </div>
                 </div>
-            </div>
+            </a>
         </div>
         
     </div>

@@ -52,6 +52,10 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/servicios', [PrincipalesController::class, 'servicios'])->name('servicios.servicios');
     Route::get('/reportes/clientes', [ReporteController::class, 'clientes'])->name('reportes.clientes');
     Route::get('/reportes/equipos', [ReporteController::class, 'equipos'])->name('reportes.equipos');
+    Route::get('/reportes/ganancias', [ReporteController::class, 'ganancias'])->name('reportes.ganancias');
+
+
+
     Route::get('serviciotecnico/listar', [ServiciotecnicoController::class, 'listar'])->name('serviciotecnico.listar');
     Route::get('enviarcorreo/{user}', [EnviarAvisoController::class, 'store'])->name('enviarcorreo.store');
     // Rutas de TIPO SERVICIO
@@ -84,6 +88,12 @@ Route::middleware(['auth'])->group(function () {
      Route::get('reportes/pdf/equipos/{fechainicio}/{fechafin}',[ReporteController::class,'pdfequiposfecha']);
 
      Route::get('reportes/pdf/equipos/{fechainicio}/{fechafin}/{estado}',[ReporteController::class,'pdfequipostodos']);
+
+
+     // repprtes
+     Route::get('reportes/pdf/ganancias/',[ReporteController::class,'pdfgananciasall']);
+
+     Route::get('reportes/pdf/ganancias/{fechainicio}/{fechafin}',[ReporteController::class,'pdfgananciasfecha']);
 
      
 });

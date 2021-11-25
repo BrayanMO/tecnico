@@ -26,8 +26,8 @@ class ReporteController extends Controller
     }
     public function ganancias()
     {
-        $clientes = Tiposervicio::all();
-        return view('Reportes.clientes', compact('clientes'));
+        $ganancias = ServicioTecnico::sum('precio');
+        return view('Reportes.ganancias', compact('ganancias'));
     }
 
     public function pdfclienteall()
@@ -102,5 +102,22 @@ class ReporteController extends Controller
         }
             $pdf = PDF::loadView('reporte.reporteequipo', compact('equipos', 'fechainicio', 'fechafin', 'estado'));
         return $pdf->stream('pdfequipos.pdf');
+    }
+
+
+    public function pdfgananciasall(){
+        $fechainicio=null;
+        $fechafin=null;
+        $clientes= ServicioTecnico::all();
+        $ganancias = ServicioTecnico::sum('precio');
+        $pdf = PDF::loadView('reporte.reporteganancia', compact('ganancias', 'fechainicio', 'fechafin','clientes'));
+        return $pdf->stream('pdfganancias.pdf');
+    }
+    public function pdfgananciasfecha($fechainicio, $fechafin)
+    {
+        $clientes= ServicioTecnico::whereBetween('servicio_tecnicos.fechaentrada', [$fechainicio,$fechafin])->get();
+        $ganancias = ServicioTecnico::whereBetween('servicio_tecnicos.fechaentrada', [$fechainicio, $fechafin])->sum('precio');
+        $pdf = PDF::loadView('reporte.reporteganancia', compact('ganancias', 'fechainicio', 'fechafin','clientes'));
+        return $pdf->stream('pdfganancias.pdf');
     }
 }
