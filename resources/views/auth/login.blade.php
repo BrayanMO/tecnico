@@ -1,7 +1,7 @@
 <x-guest-layout>
     <x-jet-authentication-card>
         <x-slot name="logo">
-            <x-jet-authentication-card-logo />
+            <img class="w-20 rounded-full border-black  fill-current" src="{{ asset('img/logoCompusolution.jpg') }}" alt="Compusolution">
         </x-slot>
 
         <x-jet-validation-errors class="mb-4" />
@@ -35,7 +35,7 @@
             <div class="flex items-center justify-end mt-4">
                 @if (Route::has('password.request'))
                     <a class="underline text-sm text-gray-600 hover:text-gray-900" href="{{ route('password.request') }}">
-                        {{ __('Forgot your password?') }}
+                        {{ __('Olvidaste tu contraseña?') }}
                     </a>
                 @endif
 
@@ -43,6 +43,7 @@
                     {{ __('Log in') }}
                 </x-jet-button>
             </div>
+            <a href="{{ route('register') }}">No tienes cuenta? <strong>Registrate</strong> </a>
         </form>
     </x-jet-authentication-card>
 </x-guest-layout>

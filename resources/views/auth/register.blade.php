@@ -1,7 +1,7 @@
 <x-guest-layout>
     <x-jet-authentication-card>
         <x-slot name="logo">
-            <x-jet-authentication-card-logo />
+            <img class="w-20 rounded-full border-black  fill-current" src="{{ asset('img/logoCompusolution.jpg') }}" alt="Compusolution">
         </x-slot>
 
         <x-jet-validation-errors class="mb-4" />
@@ -48,7 +48,7 @@
 
             <div class="flex items-center justify-end mt-4">
                 <a class="underline text-sm text-gray-600 hover:text-gray-900" href="{{ route('login') }}">
-                    {{ __('Already registered?') }}
+                    {{ __('Ya estas registrado?') }}
                 </a>
 
                 <x-jet-button class="ml-4">
