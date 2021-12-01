@@ -147,7 +147,7 @@
             <x-jet-responsive-nav-link href="{{ route('dashboard') }}" :active="request()->routeIs('dashboard')">
                 {{ __('Inicio') }}
             </x-jet-responsive-nav-link>
-            <x-jet-nav-link href="{{ route('servicios.servicios') }}" :active="request()->routeIs('servicios.servicios')">
+            <x-jet-nav-link href="{{ route('dashboard') }}" :active="request()->routeIs('servicios.servicios')">
                 {{ __('Servicios') }}
             </x-jet-nav-link>
             <x-jet-nav-link href="{{ route('reportes.reportes') }}" :active="request()->routeIs('reportes.reportes')">
