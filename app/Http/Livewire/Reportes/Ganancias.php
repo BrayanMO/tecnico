@@ -20,11 +20,14 @@ class Ganancias extends Component
     public function render()
     {
         if (!$this->fechainicio == '' || !$this->fechafin == '') {
-            $this->ganancias = ServicioTecnico::whereBetween('fechaentrada', [$this->fechainicio, $this->fechafin])->sum('precio');
-            $this->clientes= ServicioTecnico::whereBetween('servicio_tecnicos.fechaentrada', [$this->fechainicio,$this->fechafin])->get();
+            $fi = Carbon::parse($this->fechainicio)->format('Y-m-d 00:00:00');
+            $ff = Carbon::parse($this->fechafin)->format('Y-m-d 23:59:59');
+            $this->ganancias = ServicioTecnico::whereBetween('fechaentrada', [$fi, $ff])->sum('precio');
+            $this->clientes= ServicioTecnico::whereBetween('servicio_tecnicos.fechaentrada', [$fi,$ff])->get();
             
             if (!$this->fechainicio == '' && !$this->fechafin == '') {
-                $fecha=strtotime($this->fechainicio);
+                $fi = Carbon::parse($this->fechainicio)->format('Y-m-d 00:00:00');
+                $fecha=strtotime($fi);
                 // $fechainicio = Carbon::parse($fechainicio)->format('Y-m-d');
                 $this->ano = date('Y', $fecha);
                 $this->mes = date('m', $fecha);

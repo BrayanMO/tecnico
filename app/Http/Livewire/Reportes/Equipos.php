@@ -3,6 +3,7 @@
 namespace App\Http\Livewire\Reportes;
 
 use App\Models\ServicioTecnico;
+use Carbon\Carbon;
 use Livewire\Component;
 
 class Equipos extends Component
@@ -19,7 +20,9 @@ class Equipos extends Component
         
         if(!$this->fechainicio == '' || !$this->fechafin == '' || !$this->estado==null) {
             if($this->estado==null) {
-                $this->equipos = ServicioTecnico::whereBetween('servicio_tecnicos.fechaentrada', [$this->fechainicio, $this->fechafin])->get();
+                $fi = Carbon::parse($this->fechainicio)->format('Y-m-d 00:00:00');
+                $ff = Carbon::parse($this->fechafin)->format('Y-m-d 23:59:59');
+                $this->equipos = ServicioTecnico::whereBetween('servicio_tecnicos.fechaentrada', [$fi, $ff])->get();
             }
             if($this->fechainicio == '' && $this->fechafin == ''){
                 $this->estado=intval($this->estado);
@@ -27,7 +30,9 @@ class Equipos extends Component
             }
             if(!$this->fechainicio == '' && !$this->fechafin == '' && !$this->estado==null){
                 $this->estado=intval($this->estado);
-                $this->equipos = ServicioTecnico::whereBetween('servicio_tecnicos.fechaentrada', [$this->fechainicio, $this->fechafin])->where('servicio_tecnicos.estado', '=', $this->estado)->get();
+                $fi = Carbon::parse($this->fechainicio)->format('Y-m-d 00:00:00');
+                $ff = Carbon::parse($this->fechafin)->format('Y-m-d 23:59:59');
+                $this->equipos = ServicioTecnico::whereBetween('servicio_tecnicos.fechaentrada', [$fi, $ff])->where('servicio_tecnicos.estado', '=', $this->estado)->get();
             }
 
         }else {
