@@ -18,6 +18,9 @@ class Show extends Component
     public function render()
     { 
         $tiposervicios = Tiposervicio::all();
+        if(empty($tiposervicios)){
+            $tiposervicios=[];
+        }
         return view('livewire.tipo-servicio.show',compact($tiposervicios));
     }
     public function delete(Tiposervicio $tiposervicio){

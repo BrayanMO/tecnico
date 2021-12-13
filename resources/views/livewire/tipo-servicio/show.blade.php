@@ -67,8 +67,7 @@
                                 <a href="{{ route('tiposervicio.edit', $servicio->id) }}" --}}>
                                     <button
                                         class="p-2 pl-5 pr-5 bg-blue-500 text-gray-100 text-lg rounded-lg focus:border-4 border-blue-300
-                                        "
-                                        data-toggle="modal" data-target="#Modaleditartiposervicio">EDITAR
+                                        ">EDITAR
                                     </button>
                                 </a>
                             </td>
@@ -77,7 +76,7 @@
 
 
                             <td>
-                                <a name="delete" href="#"
+                                <a name="delete"
                                     class="p-2 pl-5 pr-5 bg-red-500 text-gray-100 text-lg rounded-lg focus:border-4 border-red-300"
                                     wire:click="$emit('deleteServicio',{{ $servicio->id }})">
                                     Eliminar
@@ -111,7 +110,8 @@
             {{-- mensaje error --}}
             <h1>El tipo servicio no se pudo eliminar</h1>
             <p>Es una clave foranea</p>
-            <button wire:click="$set('open_edit',false)" class="px-4 py-2 font-medium tracking-wide text-white capitalize transition-colors duration-200 transform bg-indigo-600 rounded-md hover:bg-indigo-500 focus:outline-none focus:ring focus:ring-indigo-300 focus:ring-opacity-80">
+            <button wire:click="$set('open_edit',false)"
+                class="px-4 py-2 font-medium tracking-wide text-white capitalize transition-colors duration-200 transform bg-indigo-600 rounded-md hover:bg-indigo-500 focus:outline-none focus:ring focus:ring-indigo-300 focus:ring-opacity-80">
                 Cerrar
             </button>
             {{-- mensaje error fin --}}
@@ -150,25 +150,12 @@
                     confirmButtonText: 'Sí, bórralo.'
                 }).then((result) => {
                     if (result.isConfirmed) {
-                        let estado=true;
-                        estado = Livewire.emitTo('tipo-servicio.show', 'delete', servicioId);
-                        console.log(estado);
-                        if (estado === false) {
-                            Swal.fire({
-                                icon: 'error',
-                                title: 'Oops...',
-                                text: 'Something went wrong!',
-                                footer: '<a href="">Why do I have this issue?</a>'
-                            })
-
-                        }else if (estado){
-                            Swal.fire(
-                            'Deleted!',
-                            'Su archivo ha sido borrado.',
-                            'success'
-                        )
-                        }
-                        
+                        Livewire.emitTo('tipo-servicio.show', 'delete', servicioId);
+                        // Swal.fire(
+                        //     'Deleted!',
+                        //     'Su archivo ha sido borrado.',
+                        //     'success'
+                        // )
                     }
                 })
             });
