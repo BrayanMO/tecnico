@@ -23,7 +23,7 @@ class TiposervicioController extends Controller
         return view('TipoServicio.show');
     }
     public function edit(Tiposervicio $tiposervicio){
-        return view('TipoServicio.Edit',compact('tiposervicio'));
+        return view('TipoServicio.edit',compact('tiposervicio'));
     }
     public function update(Tiposervicio $tiposervicio, StoreTiposervicio $request){
         $tiposervicio->update($request->all());

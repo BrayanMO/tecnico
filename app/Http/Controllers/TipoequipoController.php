@@ -23,7 +23,7 @@ class TipoequipoController extends Controller
         return view('TipoEquipo.show');
     }
     public function edit(Tipoequipo $tipoequipo){
-        return view('TipoEquipo.Edit',compact('tipoequipo'));
+        return view('TipoEquipo.edit',compact('tipoequipo'));
     }
     public function update(Tipoequipo $tipoequipo,StoreTipoequipo $request){
         $tipoequipo->update($request->all());
